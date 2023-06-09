@@ -1,0 +1,19 @@
+inorder traversal
+
+void postorder(TreeNode* root, vector<int>& ans) {
+    if (root == NULL)
+      return;
+    
+    postorder(root->left, ans);
+    ans.push_back(root->data);
+    postorder(root->right, ans);
+    
+  }
+vector<int> getInOrderTraversal(TreeNode *root)
+{
+    // Write your code here.
+    vector<int> ans;
+    postorder(root, ans);
+    return ans;
+}
+
