@@ -1,0 +1,50 @@
+//is balance or not
+
+#include <bits/stdc++.h> 
+/*************************************************************
+ 
+    Following is the Binary Tree node structure
+
+    class BinaryTreeNode 
+    {
+    public : 
+        T data;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+
+        BinaryTreeNode(T data) {
+            this -> data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+*************************************************************/
+pair<bool,int>isBfast(BinaryTreeNode<int>* root){
+    if(root==NULL){
+        pair<int,int>p={1,0};
+        return p;
+    }
+    pair<int,int>left=isBfast(root->left);
+    pair<int,int>right=isBfast(root->right);
+    bool left1=left.first;
+    bool right1=right.first;
+    bool diff=abs(left.second-right.second)<=1;
+    pair<int,int>ans;
+    ans.second=1+max(left.second,right.second);
+    
+    if(left1 && right1 && diff){
+        ans.first=1;
+        return ans;
+    }
+    else{
+        ans.second=0;
+        return ans;
+        
+    }
+}
+bool isBalancedBT(BinaryTreeNode<int>* root) {
+    // Write your code here.
+    return isBfast(root).first;
+
+}
