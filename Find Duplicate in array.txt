@@ -15,6 +15,7 @@ int findDuplicate(vector<int> &arr, int n){
 	// 		cout<<it.first<<endl;
 	// 	}
 	
+	//Solve this method
 	if(n<=1) return -1;
 	int s=arr[0];
 	int e=arr[arr[0]];
